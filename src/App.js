@@ -1,17 +1,10 @@
 import { useState } from 'react';
 import './App.css';
-import About from './components/About';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-
-} from 'react-router-dom';
 
 
 function App() {
@@ -24,9 +17,9 @@ function App() {
       message:message,
       type:type
     })
-  //   setTimeout(()=>{
-  //     setAlert(null);
-  //   },1500);
+    setTimeout(()=>{
+      setAlert(null);
+    },1500);
    }
 
 
@@ -46,23 +39,19 @@ function App() {
     
   return (
     <>
-    <Router>
+  
+  <div className="container my-3 ">
+
+    <Navbar title="Textutils" mode={mode} toggleMode = {toggleMode}/>
     <Alert alert={alert}/>
+    </div>
 
-<div className="container my-3 ">
-<Navbar title="Textutils" mode={mode} toggleMode = {toggleMode}/>
-<Switch>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
-          <TextForm showAlert={showAlert} heading="Enter the text to analyze "mode={mode}/>
-            </Route>
-        </Switch>
-              </div>
-              </Router>
-    </>
-
+              
+           
+               {/* <About /> */}
+              <TextForm showAlert={showAlert} heading="Enter the text to analyze "mode={mode}/> 
+    
+              </>
   );
 }
 
